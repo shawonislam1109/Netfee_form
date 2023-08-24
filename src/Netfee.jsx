@@ -11,12 +11,12 @@ const Netfee = () => {
   const [address, setAddress] = useState("");
   const [Package, setPackage] = useState("");
   const [Customer, setCustomer] = useState([]);
-  const [refer, setRefer]= useState({})
+  const [refer, setRefer] = useState({});
 
   var customer_type = {
-      Package,
-      Customer
-  }
+    Package,
+    Customer,
+  };
   var FromGetData = {
     name,
     admin,
@@ -26,45 +26,45 @@ const Netfee = () => {
     district,
     thana,
     customer_type,
-    refer
+    refer,
   };
 
- var customerHandle = (e) => {
-      if(e.target.checked){
-        const value1 = [...Customer, e.target.value]
-        setCustomer(value1)
-      }
-      else{
-        const value2 = Customer.filter(customer => customer !== e.target.value)
-        setCustomer(value2)
-      }
- }
+  var customerHandle = (e) => {
+    if (e.target.checked) {
+      const value1 = [...Customer, e.target.value];
+      setCustomer(value1);
+    } else {
+      const value2 = Customer.filter((customer) => customer !== e.target.value);
+      setCustomer(value2);
+    }
+  };
 
- var referance = (e) => {
-    const referData = {...refer,
-     [e.target.name] : e.target.value,
-     }
-    setRefer(referData)
- }
+  var referance = (e) => {
+    const referData = {...refer, [e.target.name]: e.target.value};
+    setRefer(referData);
+  };
 
   const handleSummit = (e) => {
     e.preventDefault();
     const FromGetData2 = FromGetData;
-    console.log(FromGetData2)
-    FromGetData = null ; 
- 
+    console.log(FromGetData2);
+    FromGetData = null;
   };
 
   const handleClear = () => {
-    FromGetData =  null; 
-    location.reload(); 
-  }
+    FromGetData = null;
+    location.reload();
+  };
 
   return (
     <div className=" container bg-white">
       <div className="w-50 mx-auto">
         <h3 className="text-muted text-md pt-5">Registration</h3>
-        <form id="FromData" onSubmit={handleSummit}>
+        <form
+          className="needs-validation was-validated"
+          id="FromData"
+          onSubmit={handleSummit}
+          noValidate>
           <label htmlFor="name">
             Organization Name <span className="text-warning ">*</span>
           </label>
@@ -122,15 +122,13 @@ const Netfee = () => {
             Selcet Division <span className="text-warning">*</span>
           </label>
           <select
-            className="form-select form-control mb-2"
-            aria-label="Default select example"
+            className="form-select"
             required
+            aria-label="select example"
             onChange={(e) => setDivison(e.target.value)}
             name="divison"
             id="divison">
-            <option selected disabled>
-              ...
-            </option>
+            <option value="">...</option>
             <option value="Dhaka">Dhaka</option>
             <option value="Barisal">Barisal</option>
             <option value="Rajshahi">Rajshahi</option>
@@ -140,15 +138,13 @@ const Netfee = () => {
             Selcet District <span className="text-warning">*</span>
           </label>
           <select
-            className="form-select form-control mb-2"
-            aria-label="Default select example"
+            className="form-select"
             required
+            aria-label="select example"
             onChange={(e) => setDistrict(e.target.value)}
             name="district"
             id="district">
-            <option selected disabled>
-              ...
-            </option>
+            <option value="">...</option>
             <option value="Tangail">Tangail</option>
             <option value="Bugura">Bugura</option>
             <option value="Nachole">Nachole</option>
@@ -158,15 +154,13 @@ const Netfee = () => {
             Selcet Thana <span className="text-warning">*</span>
           </label>
           <select
-            className="form-select form-control mb-2"
-            aria-label="Default select example"
+            className="form-select"
             required
+            aria-label="select example"
             onChange={(e) => setThana(e.target.value)}
             name="thana"
             id="thana">
-            <option selected disabled>
-              ...
-            </option>
+            <option value="">...</option>
             <option value="Gomastapur">Gomastapur</option>
             <option value="Khesapur">Khesapur</option>
             <option value="Mirarpur">Mirarpur</option>
@@ -197,15 +191,13 @@ const Netfee = () => {
             <span className="text-warning pb-1">*</span>
           </label>
           <select
-            className="form-select form-control mb-2"
-            aria-label="Default select example"
+            className="form-select mb-2"
             required
+            aria-label="select example"
             onChange={(e) => setPackage(e.target.value)}
             name="package"
             id="package">
-            <option selected disabled>
-              Selcet Package
-            </option>
+            <option value="">...</option>
             <option value="p1-100">p1-100</option>
             <option value="p2-2200">p2-200</option>
             <option value="p3-300">p3-300</option>
@@ -225,7 +217,7 @@ const Netfee = () => {
                 type="checkbox"
                 onClick={(e) => customerHandle(e)}
                 // checked={Customer.includes('PPPLE')}
-              value='PPPLE'
+                value="PPPLE"
                 id="PPPLE"
               />
               <label className="form-check-label" for="PPPLE">
@@ -238,7 +230,7 @@ const Netfee = () => {
                 type="checkbox"
                 // checked={Customer.includes('Static')}
                 onClick={(e) => customerHandle(e)}
-               value='Static'
+                value="Static"
                 id="Static"
               />
               <label className="form-check-label" for="Static">
@@ -249,7 +241,7 @@ const Netfee = () => {
               <input
                 className="form-check-input"
                 type="checkbox"
-                value='Hotspot'
+                value="Hotspot"
                 // checked={Customer.includes('Hotspot')}
                 onClick={(e) => customerHandle(e)}
                 id="Hotspot"
@@ -261,9 +253,7 @@ const Netfee = () => {
           </div>
 
           <div className="my-3 border p-3">
-            <label htmlFor="refername">
-              Referance Name 
-            </label>
+            <label htmlFor="refername">Referance Name</label>
             <input
               id="refername"
               type="text"
@@ -271,12 +261,11 @@ const Netfee = () => {
               // placeholder="Enter your name"
               name="refername"
               defaultValue={refer?.refername}
-              onChange={(e) => referance( e)}
+              onChange={(e) => referance(e)}
+              required
             />
 
-            <label htmlFor="refermobile">
-               Referance Mobile 
-            </label>
+            <label htmlFor="refermobile">Referance Mobile</label>
             <input
               id="refermobile"
               type="number
@@ -285,9 +274,9 @@ const Netfee = () => {
               // placeholder="Enter your name"
               name="refermobile"
               defaultValue={refer?.refermobile}
-              onChange={(e) => referance( e)}
+              onChange={(e) => referance(e)}
+              required
             />
-          
           </div>
 
           <input
@@ -296,7 +285,7 @@ const Netfee = () => {
             value="Register"></input>
           <input
             type="reset"
-            onClick={()=>handleClear()}
+            onClick={() => handleClear()}
             className="btn btn-secondary ms-2 my-3"
             value="Reset"></input>
         </form>
