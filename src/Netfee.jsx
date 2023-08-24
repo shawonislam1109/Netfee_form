@@ -13,7 +13,10 @@ const Netfee = () => {
   const [Customer, setCustomer] = useState([]);
   const [refer, setRefer]= useState({})
 
-  
+  var customer_type = {
+      Package,
+      Customer
+  }
   var FromGetData = {
     name,
     admin,
@@ -22,8 +25,7 @@ const Netfee = () => {
     divison,
     district,
     thana,
-    Package,
-    Customer,
+    customer_type,
     refer
   };
 
@@ -204,11 +206,11 @@ const Netfee = () => {
             <option selected disabled>
               Selcet Package
             </option>
-            <option value="100">p1-100</option>
-            <option value="200">p2-200</option>
-            <option value="300">p3-300</option>
-            <option value="400">p4-400</option>
-            <option value="500">p5-500</option>
+            <option value="p1-100">p1-100</option>
+            <option value="p2-2200">p2-200</option>
+            <option value="p3-300">p3-300</option>
+            <option value="p4-400">p4-400</option>
+            <option value="p5-500">p5-500</option>
           </select>
           <button type="button" className="btn btn-primary w-100 mb-3 fw-bold">
             Customers : 750 Sign Up Fee : 6,000 3,000 Month Fee : 1,800
